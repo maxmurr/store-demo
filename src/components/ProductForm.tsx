@@ -50,7 +50,7 @@ const ProductForm = ({
 		<Formik
 			validationSchema={ProductScheme}
 			initialValues={ProductInitialValue}
-			onSubmit={(values, {resetForm}) => {
+			onSubmit={(values, { resetForm }) => {
 				handleSubmit(values);
 				resetForm({
 					values: ProductInitialValue,
@@ -164,9 +164,9 @@ const ProductForm = ({
 					</div>
 					<button
 						type="submit"
-						disabled={!dirty || !isValid}
+						disabled={!dirty || !isValid || isSubmitting}
 						className={`inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg ${
-							!dirty && !isValid && isSubmitting
+							!dirty || !isValid || isSubmitting
 								? 'opacity-50 cursor-not-allowed bg-neutral-500 '
 								: 'bg-primary-700 focus:ring-4 focus:ring-primary-200 hover:bg-primary-800'
 						}}`}
